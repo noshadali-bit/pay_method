@@ -51,7 +51,7 @@
 		<div class="row tab" >
 			<div class="col-md-12">
 				<div class="panel-heading">
-					<h1 class="panel-title">LINK GENERATOR FOR PAYMENT</h1>
+					<h1>LINK GENERATOR FOR PAYMENT</h1>
 				</div>
 			</div>
 			<div class="col-md-12">

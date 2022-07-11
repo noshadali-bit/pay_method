@@ -9,23 +9,23 @@
 		.pay_methods_logo{
 		   width:100px !important;
 		}
-		#regForm {
- 		  	background-color: #ffffff;
- 		  	margin: 100px auto;
- 		  	padding: 40px;
- 		  	width: 70%;
- 		  	min-width: 300px;
- 		}
+		.btn > a{
+			color: white;
+		}
+	
 	</style>
 </head>
 <body>
-	{{-- {{dd($request)}} --}}
+	<div class="container">
+		<div width="100%">
+			<button class="btn btn-primary " style="float:right"><a href="{{route('dashboard')}}">Dashboard</a> </button>
+		</div>
 	<form method="POST" action="{{Route('formSubmit_1')}}" id="regForm" onsubmit="return validation(this)">
 		@csrf
 		<div class="row" >
 			<div class="col-md-12">
 				<div class="panel-heading">
-					<h1 class="panel-title">LINK GENERATOR FOR PAYMENT</h1>
+					<h1 >LINK GENERATOR FOR PAYMENT</h1>
 				</div>
 			</div>
 			<div class="col-md-12">
@@ -155,6 +155,7 @@
 			<input type="submit" name="next" value="Next" class="btn btn-primary">
 		</div>
 	</form>
+	</div>
 	<script type="text/javascript">
 		function validation(){
 			var sale_status		= document.getElementById('sale_status').value;

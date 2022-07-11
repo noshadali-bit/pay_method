@@ -13,21 +13,12 @@ class AdminController extends Controller
         $this->middleware('AdminMiddleware');
     }
 
-    function adminDashboard(){
-        $total_payments = Payment::all()->count() + StripePayment::all()->count();
-        $total_customers = Customer::all()->count();
-        // $total_customers = ;
-        // dd($total_customers);
-        return view('admin.dashboard',compact('total_payments', 'total_customers'));
-    }
+    function dashboard(){
 
-    function payments(){
-        $payments = Payment::get()->concat(StripePayment::get());
-        dd($payments);
-    }
-
-    function customers(){
-        $customers = Customer::all();
-        return view('admin.customers', compact('customers'));
+        $customer = Customer::all();
+        $payment = Payment::all();
+        $stripe = StripePayment::all();
+       
+        return view('dashboard',compact('customer', 'payment', 'stripe'));
     }
 }

@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col-sm-4"></div>
 				<div class="col-sm-4">
-					<div class="alert alert-info">
+					<div class="alert alert-primary">
 					    @foreach($errors->all() as $error)
 					    	<h6>{{$error}}</h>
 					    @endforeach

@@ -22,9 +22,10 @@ class LoginController extends Controller
             ->withErrors($validator)
             ->withInput();
         }else{
+            // dd($request);
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 $request->session()->regenerate();
-                return Redirect(Route('admin-dashboard'));
+                return Redirect(Route('dashboard'));
             }else{
                 return back()->withErrors([
                     'email' => 'The provided credentials do not match our records.'
@@ -34,12 +35,13 @@ class LoginController extends Controller
     }
 
     function signup(Request $request){
-        // dd($request);
+        
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|unique:users|email',
             'password' => 'required',
         ]);
+        // dd($request);
         if ($validator->fails()) {
             return Redirect(Route('signup'))
             ->withErrors($validator)
