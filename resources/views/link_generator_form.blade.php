@@ -290,7 +290,7 @@
 			<div class="col-md-12" >
 				<div class="form-group">
 					<label for="expiration_month">Expiration Month</label>
-		 			<select class="form-control" name="expiration_month" id="expiration_month" >
+		 			<select class="form-select" name="expiration_month" id="expiration_month" >
 		 				<option value="01">January</option>
 		                <option value="02">February </option>
 		                <option value="03">March</option>
@@ -309,7 +309,7 @@
 			<div class="col-md-12" >
 				<div class="form-group">
 					<label for="expiration_year">Expiration Year</label>
-		 			<select class="form-control" name="expiration_year" id="expiration_year" >
+		 			<select class="form-select" name="expiration_year" id="expiration_year" >
 		 				<option value="2022">2022</option>
 			            <option value="2023">2023</option>
 		               	<option value="2024">2024</option>
@@ -329,7 +329,7 @@
 		<span id="authorizeSpan" style="display:none;">
 			<div class="col-md-12" >
 				<div class="form-group">
-					<label for="name_oncard">Name One Card</label>
+					<label for="name_oncard">Name On Card</label>
 					<input class="form-control" type="text" id="name_oncard" name="name_oncard" >
 				</div>
 			</div>
@@ -387,12 +387,11 @@
 	<div style="overflow:auto;">
 	 	<div style="float:right;">
 	 		<button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-	 		<button type="button" onclick="stripePay(this)" style="display:none;" id="stripeBtn">Pay Witjh Stripe</button>
+	 		<button type="button" onclick="stripePay(this)" style="display:none;" id="stripeBtn">Pay With Stripe</button>
 	 		<button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
 	 	</div>
 	</div>
 
-	 		<!-- Circles which indicates the steps of the form: -->
 	<div style="text-align:center;margin-top:40px;">
 	 	<span class="step"></span>
 	 	<span class="step"></span>

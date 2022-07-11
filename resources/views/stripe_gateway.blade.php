@@ -19,7 +19,7 @@
 	<div class="container">
 	<form role="form" class="require-validation" action="{{Route('stripe-gateway')}}" method="POST" data-stripe-publishable-key="pk_test_51LJg8yEQArJ4EtpN0SNTyLKoQi0gpW6MsCsI4aURdkkXssj2griH1rShwTJ0caH4w9ZXLZlmez29lNzmWlNNMgb200H1cwWUYc" id="payment-form" data-cc-on-file="false">
 		@csrf
-		<h1>LINK GENERATOR FOR PAYMENT</h1>
+		<h1  class="panel-title">LINK GENERATOR FOR PAYMENT</h1>
 		<input type="hidden" name="payment_gateway" id="payment_method" value="Stripe" />
     	
     	<input type="hidden" name="description" value="{{$request->description??''}}" />
@@ -88,15 +88,15 @@
 		</p>
 		<p>
 			<label for="card_number">Card Number</label>
-			<input class="form-control" type="number" class="card-number" name="card_number" id="card_number" autocomplete="off" required>
+			<input class="form-control card-number" type="number" name="card_number" id="card_number" autocomplete="off" required>
 		</p>
 		<p>
 			<label for="cvv">CVV</label>
-			<input class="form-control" type="number" name="cvv" id="cvv" class="card-cvc" autocomplete="off" required>
+			<input class="card-cvc form-control" type="number" name="cvv" id="cvv" autocomplete="off" required>
 		</p>
 		<p>
 			<label for="expiration_month">Expiration Month</label>
-			<select name="expiration_month" id="expiration_month" class="card-expiry-month" >
+			<select name="expiration_month" id="expiration_month" class="card-expiry-month form-select" >
 				<option value="01">January</option>
                	<option value="02">February </option>
                	<option value="03">March</option>
@@ -114,7 +114,7 @@
 
 		<p>
 			<label for="expiration_year">Expiration Year</label>
-			<select name="expiration_year" id="expiration_year" class="card-expiry-year">
+			<select name="expiration_year" id="expiration_year" class="card-expiry-year form-select">
 				<option value="2022">2022</option>
 	            <option value="2023">2023</option>
 	            <option value="2024">2024</option>
