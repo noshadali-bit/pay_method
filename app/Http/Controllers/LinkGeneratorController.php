@@ -100,9 +100,9 @@ class LinkGeneratorController extends Controller
                 $payment->sale_currency             = $request->sale_currency;
                 $payment->customer_id               = $customer->id;
                 if ($payment->save()) {
-                    $details = $payment;
+                    // $details = $payment;
                    
-                    \Mail::to($request->billing_email)->send(new \App\Mail\sendMail($details));
+                    // \Mail::to($request->billing_email)->send(new \App\Mail\sendMail($details));
                    
                     dd("Email is Sent.");
                     return redirect(Route('/'))->with('msg','Payment Successfull');
@@ -145,9 +145,9 @@ class LinkGeneratorController extends Controller
                 $stripe_payment->expiration_year = $request->expiration_year;
                 $stripe_payment->customer_id = $customer->id;
                 if ($stripe_payment->save()) {
-                    $details = $stripe_payment;
+                    // $details = $stripe_payment;
                    
-                    \Mail::to($request->billing_email)->send(new \App\Mail\sendMail($details));
+                    // \Mail::to($request->billing_email)->send(new \App\Mail\sendMail($details));
 
                     return redirect(Route('/'))->with('msg','Payment Successfull');
                 }else{
@@ -189,8 +189,8 @@ class LinkGeneratorController extends Controller
                 $stripe_payment->customer_id = $customer->id;
                 if ($stripe_payment->save()) {
                     
-                    $details = $stripe_payment;
-                    \Mail::to($request->billing_email)->send(new \App\Mail\sendMail($details));
+                    // $details = $stripe_payment;
+                    // \Mail::to($request->billing_email)->send(new \App\Mail\sendMail($details));
                     
                     return redirect(Route('/'))->with('msg','Payment Successfull');
                 }else{
@@ -314,91 +314,8 @@ class LinkGeneratorController extends Controller
                     return redirect(Route('/'))->with('msg','Something Went Wrong');
                 }
 
-            }
-            
-            // return redirect(Route('/'));
+            }            
         }
     }
 
-    /*function pay(){
-        return view('pay');
-    }*/
-
-    /*function handleonlinepay(Request $request){
-        $input = $request->input();
-        $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-        $merchantAuthentication->setName(env('MERCHANT_LOGIN_ID'));
-        $merchantAuthentication->setTransactionKey(env('MERCHANT_TRANSACTION_KEY'));
-
-        $refId = 'ref' . time();
-        $cardNumber = preg_replace('/\s+/', '', $input['cardNumber']);
-
-        $creditCard = new AnetAPI\CreditCardType();
-        $creditCard->setCardNumber($cardNumber);
-        $creditCard->setExpirationDate($input['expiration-year'] . "-" .$input['expiration-month']);
-        $creditCard->setCardCode($input['cvv']);
-
-        $paymentOne = new AnetAPI\PaymentType();
-        $paymentOne->setCreditCard($creditCard);
-
-        $transactionRequestType = new AnetAPI\TransactionRequestType();
-        $transactionRequestType->setTransactionType("authCaptureTransaction");
-        $transactionRequestType->setAmount($input['amount']);
-        $transactionRequestType->setPayment($paymentOne);
-
-        $requests = new AnetAPI\CreateTransactionRequest();
-        $requests->setMerchantAuthentication($merchantAuthentication);
-        $requests->setRefId($refId);
-        $requests->setTransactionRequest($transactionRequestType);
-
-        $controller = new AnetController\CreateTransactionController($requests);
-        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
-
-        if ($response != null) {
-             if ($response->getMessages()->getResultCode() == "Ok") {
-                $tresponse = $response->getTransactionResponse();
-
-                if ($tresponse != null && $tresponse->getMessages() != null) {
-                    $message_text = $tresponse->getMessages()[0]->getDescription().", Transaction ID: " . $tresponse->getTransId();
-                    $msg_type = "success_msg";
-
-                    \App\Models\PaymentLogs::create([                                         
-                        'amount' => $input['amount'],
-                        'response_code' => $tresponse->getResponseCode(),
-                        'transaction_id' => $tresponse->getTransId(),
-                        'auth_id' => $tresponse->getAuthCode(),
-                        'message_code' => $tresponse->getMessages()[0]->getCode(),
-                        'name_on_card' => trim($input['owner']),
-                        'quantity'=>1
-                    ]);
-                }else {
-                    $message_text = 'There were some issue with the payment. Please try again later.';
-                    $msg_type = "error_msg";
-
-                    if ($tresponse->getErrors() != null) {
-                        $message_text = $tresponse->getErrors()[0]->getErrorText();
-                        $msg_type = "error_msg";                                    
-                    }
-                }
-            }else {
-                $message_text = 'There were some issue with the payment. Please try again later.';
-                $msg_type = "error_msg";                                    
-
-                $tresponse = $response->getTransactionResponse();
-
-                if ($tresponse != null && $tresponse->getErrors() != null) {
-                    $message_text = $tresponse->getErrors()[0]->getErrorText();
-                    $msg_type = "error_msg";                    
-                } else {
-                    $message_text = $response->getMessages()->getMessage()[0]->getText();
-                    $msg_type = "error_msg";
-                }
-            }
-        } else {
-            $message_text = "No response returned";
-            $msg_type = "error_msg";
-        }
-
-         return back()->with($msg_type, $message_text);
-    }*/
 }
