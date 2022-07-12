@@ -21,8 +21,8 @@
                     <button class="btn btn-primary " style="float:right"><a href="{{route('logout')}}">Logout</a> </button>
                 </div>
                 <button class="btn btn-primary" id="cus_btn">Show Customer</button>
-                <button class="btn btn-primary" id="pay_btn">Show Paypal Payment</button>
-                <button class="btn btn-primary" id="str_btn">Show Stripe & Authorize Payment</button>
+                <button class="btn btn-primary" id="pay_btn">Show Stripe & Authorize Payment</button>
+                <button class="btn btn-primary" id="str_btn">Show Paypal Payment</button>
                 <div id="customer">
                     <h2>Customer</h2>
                     <table class="table">

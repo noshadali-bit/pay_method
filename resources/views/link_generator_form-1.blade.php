@@ -96,7 +96,7 @@
                                                                         
 			<div class="col-md-3" id="authorize_merchant">
 				<div class="form-group">
-					<input id="radio1002" type="radio" class="form-control" name="authorize" value="3" >
+					<input id="radio1002" type="radio" class="form-control" value="authorize" name="payment_gateway" >
 					<label for="radio1002"><img src="https://creativewebsitestudios.softpaymentterminal.com/public/images/authorize_logo.png" class="pay_methods_logo"></label>
 				</div>
 			</div>

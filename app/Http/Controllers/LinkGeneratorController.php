@@ -31,7 +31,7 @@ class LinkGeneratorController extends Controller
             if($request->filled('payment_gateway') && $request->payment_gateway == 'authorize'){
                 return view('authorize_gateway',compact('request'));
             }
-
+            // dd($request);
         }
 
     }

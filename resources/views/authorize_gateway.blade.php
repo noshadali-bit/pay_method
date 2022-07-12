@@ -3,19 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 	<title>Paypal Payment Gateway</title>
-	<style type="text/css">
-		#regForm {
- 		  	background-color: #ffffff;
- 		  	margin: 100px auto;
- 		  	padding: 40px;
- 		  	width: 70%;
- 		  	min-width: 300px;
- 		}
-	</style>
 </head>
 <body>
-	{{-- {{dd($request->customer_email)}} --}}
+	<div class="container">
 	<form id="order-place" method="POST" action="{{Route('authorize-gateway')}}" onsubmit="return validation(this)">
 		@csrf
 		<h1>LINK GENERATOR FOR PAYMENT</h1>
@@ -33,69 +26,69 @@
     	@endif
 		<p>
 			<label for="sale_amount">Amount *</label>
-			<input type="number" id="sale_amount" value="{{$request->sale_amount}}" name="sale_amount" readonly>
+			<input class="form-control" type="number" id="sale_amount" value="{{$request->sale_amount}}" name="sale_amount" readonly>
 		</p>
 		<p>
 			<label for="sale_currency">Amount Currency *</label>
-			<input type="text" id="sale_currency" value="{{$request->sale_currency}}" name="sale_currency" readonly>
+			<input class="form-control" type="text" id="sale_currency" value="{{$request->sale_currency}}" name="sale_currency" readonly>
 		</p>
 		<h4>
 			BILLING DETAILS :
 		</h4>
 		<p>
 			<label for="billing_firstname">First Name *</label>
-			<input type="text" class="valid" name="billing_firstname" id="billing_firstname" required>
+			<input type="text" class="form-control valid" name="billing_firstname" id="billing_firstname" required>
 		</p>
 		<p>
 			<label for="billing_lastname">Last Name *</label>
-			<input type="text" class="valid" name="billing_lastname" id="billing_lastname" required>
+			<input type="text" class="form-control valid" name="billing_lastname" id="billing_lastname" required>
 		</p>
 		<p>
 			<label for="billing_address">Address *</label>
-			<input type="text" class="valid" name="billing_address" id="billing_address" required>
+			<input type="text" class="form-control valid" name="billing_address" id="billing_address" required>
 		</p>
 		<p>
 			<label for="billing_country">Country *</label>
-			<input type="text" class="valid" name="billing_country" id="billing_country" required>
+			<input type="text" class="form-control valid" name="billing_country" id="billing_country" required>
 		</p>
 		<p>
 			<label for="billing_state">State/Province *</label>
-			<input type="text" class="valid" name="billing_state" id="billing_state" required>
+			<input type="text" class="form-control valid" name="billing_state" id="billing_state" required>
 		</p>
 		<p>
 			<label for="billing_city">City *</label>
-			<input type="text" class="valid" name="billing_city" id="billing_city" required>
+			<input type="text" class="form-control valid" name="billing_city" id="billing_city" required>
 		</p>
 		<p>
 			<label for="postal_code">ZIP/Postal Code *</label>
-			<input type="text" class="valid" name="postal_code" id="postal_code" required>
+			<input type="text" class="form-control valid" name="postal_code" id="postal_code" required>
 		</p>
 		<p>
 			<label for="billing_email">Billing Email</label>
-			<input type="email" class="valid" name="billing_email" id="billing_email" value="{{$request->customer_email}}" required>
+			<input type="email" class="form-control valid" name="billing_email" id="billing_email" value="{{$request->customer_email}}" required>
 		</p>
 		<p>
 			<label for="billing_phonenumber">Phone/Cell Number *</label>
-			<input type="number" class="valid" name="billing_phonenumber" id="billing_phonenumber" required>
+			<input type="number" class="form-control valid" name="billing_phonenumber" id="billing_phonenumber" required>
 		</p>
 		<h4>
 			Pay Now
 		</h4>
 		<p>
-			<label for="name_oncard">Name on Card</label>
-			<input type="text" name="name_oncard" id="name_oncard" required>
+			<label for="name_oncard">Name of Card</label>
+			<input class="form-control"  type="text" name="name_oncard" id="name_oncard" required>
 		</p>
 		<p>
 			<label for="card_number">Card Number</label>
-			<input type="number" class="card-number valid" name="card_number" id="card_number" autocomplete="off" required>
+			<input type="number" class="form-control card-number valid" name="card_number" id="card_number" autocomplete="off" required>
 		</p>
 		<p>
 			<label for="cvv">CVV</label>
-			<input type="number" name="cvv" id="cvv" class="card-cvc valid" autocomplete="off" required>
+			<input type="number" name="cvv" id="cvv" class="form-control card-cvc valid" autocomplete="off" required>
 		</p>
 		<p>
 			<label for="expiration_month">Expiration Month</label>
-			<select name="expiration_month" id="expiration_month" class="card-expiry-month" >
+			<select name="expiration_month" id="expiration_month" class="form-control card-expiry-month" >
 				<option value="01">January</option>
                	<option value="02">February </option>
                	<option value="03">March</option>
@@ -113,7 +106,7 @@
 
 		<p>
 			<label for="expiration_year">Expiration Year</label>
-			<select name="expiration_year" id="expiration_year" class="card-expiry-year">
+			<select name="expiration_year" id="expiration_year" class="form-control card-expiry-year">
 				<option value="2022">2022</option>
 	            <option value="2023">2023</option>
 	            <option value="2024">2024</option>
@@ -126,9 +119,10 @@
 	            <option value="2031">2031</option>
 			</select>
 		</p>
-		<input type="submit" name="previous" value="Previous" style="width: 100%;" formaction="{{Route('/')}}" />
-        <button type="submit" id="button_formsubmit" style="width:100%;">Submit</button>
+		<input class="btn btn-primary" type="submit" name="previous" value="Previous" style="width: 100%;" formaction="{{Route('/')}}" />
+        <button class="btn btn-primary" type="submit" id="button_formsubmit" style="width:100%;">Submit</button>
 	</form>
+	</div>
 	<script type="text/javascript">
 		function validation(){
 			var billing_firstname		= document.getElementById('billing_firstname').value;

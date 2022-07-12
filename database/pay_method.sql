@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2022 at 01:16 PM
+-- Generation Time: Jul 12, 2022 at 12:46 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -43,6 +43,16 @@ CREATE TABLE `customers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `customer_email`, `billing_firstname`, `billing_lastname`, `billing_address`, `billing_city`, `billing_state`, `postal_code`, `billing_country`, `billing_email`, `billing_phonenumber`, `sales_email`, `created_at`, `updated_at`) VALUES
+(1, 'noshadpanhwerph@gmail.com', 'test f', 'test l', 'House # D.16 Gulshan-e-Mehran Phase-I Qasimabad', 'Hyderabad', 'Sindh', '71100', 'Pakistan', 'noshadpanhwerph@gmail.com', '03332840864', 'noshadpanhweroh@gmail.com', '2022-07-11 07:00:56', '2022-07-11 07:00:56'),
+(2, 'user@gmail.com', 'John', 'Remy', '7 street', 'New-York', 'New-York', '11047', 'America', 'user@gmail.com', '090909090', 'admin@gmail.com', '2022-07-10 16:44:07', '2022-07-09 19:24:33'),
+(3, 'user_1@gmail.com', 'John', 'Remy', '7 street', 'New-York', 'New-York', '11047', 'America', 'user_1@gmail.com', '090909090', 'admin_1@gmail.com', '2022-07-11 05:34:21', '2022-07-10 06:05:23'),
+(4, 'noshadpanhweroh@gmail.com', 'test f', 'test l', 'House # D.16 Gulshan-e-Mehran Phase-I Qasimabad', 'Hyderabad', 'Sindh', '71100', 'Pakistan', 'noshadpanhweroh@gmail.com', '03332840864', 'hh@gmail.com', '2022-07-12 05:19:39', '2022-07-12 05:39:01');
 
 -- --------------------------------------------------------
 
@@ -128,6 +138,14 @@ CREATE TABLE `payments` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`id`, `payment_id`, `payer_id`, `payment_status`, `description`, `payment_gateway`, `sale_amount`, `sale_currency`, `customer_id`, `created_at`, `updated_at`) VALUES
+(1, 'PAYID-MLDAD4I17670379XT617481D', '8MMM86DXG54R8', 'Completed', 'Desc', 'paypal', 100, 'USD', 1, '2022-07-10 16:44:07', '2022-07-10 16:44:07'),
+(2, 'PAYID-MLDAF3Y6MM5549340692105N', '8MMM86DXG54R8', 'Completed', 'Desc', 'paypal', 500, 'USD', 2, '2022-07-10 16:47:50', '2022-07-10 16:47:50');
+
 -- --------------------------------------------------------
 
 --
@@ -185,6 +203,16 @@ CREATE TABLE `stripe_payments` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `stripe_payments`
+--
+
+INSERT INTO `stripe_payments` (`id`, `payment_gateway`, `stripeToken`, `description`, `sale_amount`, `sale_currency`, `name_oncard`, `card_number`, `cvv`, `expiration_month`, `expiration_year`, `customer_id`, `created_at`, `updated_at`) VALUES
+(1, 'stripe', 'tok_1LKLIJEQArJ4EtpNcgfUjUpg', 'Hello', 200, 'USD', 'pay', '424242424242', '123', '12', '2024', 3, '2022-07-11 07:00:56', '2022-07-11 07:00:56'),
+(2, 'stripe', 'tok_1LKgBpEQArJ4EtpNb3DNdGs3', 'Test', 1500, 'USD', 'pay', '424242424242', '123', '12', '2024', 4, '2022-07-12 05:19:39', '2022-07-12 05:19:39'),
+(3, 'stripe', 'tok_1LKgBpEQArJ4EtpNb3DNdGs3', 'Test', 1500, 'USD', 'pay', '424242424242', '123', '12', '2024', 4, '2022-07-12 05:22:53', '2022-07-12 05:22:53'),
+(4, 'authorize', NULL, 'abc', 120, 'USD', 'pay', '424242424242', '123', '12', '2024', 4, '2022-07-12 05:39:01', '2022-07-12 05:39:01');
+
 -- --------------------------------------------------------
 
 --
@@ -208,7 +236,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role_type`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', NULL, '$2y$10$f/NKiihjo4hihT5t3AyIFeque7mOy7LKbiHZIpVEYshrXpojE6vcq', 'Admin', NULL, '2022-07-07 18:36:40', '2022-07-07 18:36:40');
+(1, 'Admin', 'admin@gmail.com', NULL, '$2a$12$UJb45ri/FG.x234Y/rdpoOoHnR/HsVfQmZE/mVsjKahJ77Bn6qZja', 'Admin', NULL, '2022-07-05 18:36:40', '2022-07-05 18:36:40');
 
 --
 -- Indexes for dumped tables
@@ -288,7 +316,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -312,7 +340,7 @@ ALTER TABLE `packages`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `payment_logs`
@@ -330,7 +358,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `stripe_payments`
 --
 ALTER TABLE `stripe_payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
