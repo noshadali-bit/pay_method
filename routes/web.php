@@ -38,3 +38,15 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('/payments', [AdminController::class, 'payments'])->name('payments');
 Route::get('/customers', [AdminController::class, 'customers'])->name('customers');
+
+// Route::get('send-mail', function () {
+   
+//     $details = [
+//         'title' => 'Mail from ItSolutionStuff.com',
+//         'body' => 'This is for testing email using smtp'
+//     ];
+   
+//     \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\sendMail($details));
+   
+//     dd("Email is Sent.");
+// });

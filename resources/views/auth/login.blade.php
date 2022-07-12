@@ -46,6 +46,9 @@
 					<div class="mb-3">
 						<input type="submit" name="login" class="btn btn-primary w-100" value="Login">
 					</div>
+					<div class="mb-3">
+						<button class="btn btn-primary w-100"><a href="{{route('signup')}}">SIGN UP</a></button>
+					</div>
 				</form>
 			</div>
 		</div>

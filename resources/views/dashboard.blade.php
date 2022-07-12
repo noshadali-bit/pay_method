@@ -6,12 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Document</title>
+    <style>
+        .btn > a{
+			color: white;
+		}
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <h1>Dashboard Customer</h1>
+                <div width="100%">
+                    <button class="btn btn-primary " style="float:right"><a href="{{route('logout')}}">Logout</a> </button>
+                </div>
                 <button class="btn btn-primary" id="cus_btn">Show Customer</button>
                 <button class="btn btn-primary" id="pay_btn">Show Paypal Payment</button>
                 <button class="btn btn-primary" id="str_btn">Show Stripe & Authorize Payment</button>
